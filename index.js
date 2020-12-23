@@ -16,11 +16,11 @@ function delay(timeInSeconds) {
   const browser = await puppeteer.launch({headless: false});
   const page = await browser.newPage();
   await page.setViewport({ width: 1280, height: 800 });
+  await page.goto('https://tzbutton.io/', { waitUntil: 'networkidle2' });
+  await page.waitForSelector(timerSelector);
   
   // loop this
   while (!done) {
-    await page.goto('https://tzbutton.io/', { waitUntil: 'networkidle2' });
-    await page.waitForSelector(timerSelector);
     const timerVal = await page.$eval(timerSelector, el => el.innerText);
     const asArray = timerVal.split(':');
     if(asArray[0] === '00' && asArray[1] === '00') {

@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/jsking216/puppeteer-tzbucket#readme",
   "dependencies": {
+    "bignumber.js": "^9.0.1",
     "puppeteer": "^5.5.0"
   }
 }
